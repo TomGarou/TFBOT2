@@ -3,27 +3,43 @@ import net.dv8tion.jda.core.entities.User;
 public class Player {
 	// TODO Auto-generated method stub
 			/* 
-			 * Player object will store information about the current set of players.
+			 * Player object will store information about the players.
 			 *  
 			 */
 
-	private static User user;
-	private static int order;
+	private User user;
+	private  int order;
+	public String transformList = "";
 	
-	public static void setUser(User u)
+	public Player(User tfUser)
+	{
+		this.setUser(tfUser);
+	}
+	
+	public void addTransformation (String strTF)
+	{
+		transformList = transformList + " " + strTF;
+	}
+	
+	public String getAllTransformations()
+	{
+		return transformList;
+	}
+	
+	private void setUser(User u)
 	{
 		user = u;
 	}
 	
-	public static User getUser()
+	public User getUser()
 	{
 		return user;
 	}
-	public static void setOrder(int o)
+	public void setOrder(int o)
 	{
 		order = o;
 	}
-	public static int getOrder()
+	public int getOrder()
 	{
 		return order;
 	}

@@ -24,14 +24,14 @@ public class TheTFBot extends ListenerAdapter {
 	public static void main(String[] args) throws LoginException, IllegalArgumentException, InterruptedException, RateLimitedException{
 				
 		JDA discord = null;
-		
 		discord = new JDABuilder(AccountType.BOT).setToken(Constants.token).buildBlocking();
-		
-		
 		discord.addEventListener(new TheTFBot());
     }
     
-	public static void makeTransformation (Boolean isReroll)
+	//The Master list of transformations
+	//TODO: Implement this as a list imported from a flat file. It will make changes easier than modifying code, and can easily customize games.
+	
+	public void makeTransformation (Boolean isReroll)
 	{
       	
 	    
@@ -86,13 +86,35 @@ public class TheTFBot extends ListenerAdapter {
 
 	}
 	
+	//Discord Event handler. This handles the switches we get from the users.
     public void onMessageReceived(MessageReceivedEvent e)
     {
     	Message objMsg = e.getMessage();
     	MessageChannel objChannel = e.getChannel();
-    	
     	User objUser = e.getAuthor();
     	
+    	//Add Players to the game. The round will have multiple players. Hopefully...
+    	if (objMsg.getContent().equals("/add_me"))
+    	{
+    		if (!round.checkPresent(objUser))
+    		{
+    			//Create a new player object.
+    			Player me = new Player(objUser);
+    			
+    			//Add the player to the round
+    			round.addPlayer(me);
+    			
+    			//Message user
+    			objChannel.sendMessage("Added!").complete();
+    		}
+    		else
+    		{
+    			objChannel.sendMessage("Don't be silly, %s, you're already on the player's list!", round.getUserTurn().getAsMention()).complete();
+    		}
+    	}
+    	
+    	
+    	//Start the game command
     	if (objMsg.getContent().equals("/start"))
     	{
     		gameStart = true;
@@ -101,10 +123,11 @@ public class TheTFBot extends ListenerAdapter {
     		else
     		{
     			round.createOrder();
-    			objChannel.sendMessage("Time to begin! %s, it's your turn first!", round.getPlayerAt(0).getAsMention()).queue();
+    			objChannel.sendMessage("Time to begin! ", round.getUserAt(0).getAsMention() + " You're changing: " + round.getUserAt(1).getAsMention()).queue();
     		}
     	}
     	
+    	//This command should end the game
     	if (objMsg.getContent().equals("/clear") || (objMsg.getContent().equals("/end")))
     	{
     		transformation = "";
@@ -114,13 +137,48 @@ public class TheTFBot extends ListenerAdapter {
     		objChannel.sendMessage("Game Reset!").complete();
     	}
     	
+ 
+    	//A player command to get thteir list of TFs
+    	//TODO: Make sure it's formatted nicely.
+    	if(objMsg.getContent().equals("/get_tf"))
+    	{
+    	    	objUser.openPrivateChannel().queue((channel) -> sendAndLog(channel, round.getTurn().getAllTransformations()));    	
+    	    	objChannel.sendMessage(round.getUserTurn().getAsMention() + ", your transformations have been sent!").complete();
+	   	}
     	
+    	//Transform when the game has started
+    	if(objMsg.getContent().equals("/tf") && gameStart == true)
+    	{
+    		if(objUser.getAsMention().equals(round.getUserTurn().getAsMention()))
+    		{
+        		this.makeTransformation(false);
+        		round.getPlayerAt(round.softNextTurn()).addTransformation(transformation);;
+    	    	objUser.openPrivateChannel().queue((channel) -> sendAndLog(channel, transformation + "\nEnjoy!"));    	
+    	    	objChannel.sendMessage(round.getUserTurn().getAsMention() + "You transform " + round.getUserAt(round.softNextTurn()).getAsMention()).complete();
+    	    	
+		    	round.nextTurn();
+		    	objChannel.sendMessage("Your turn, %s!", round.getUserTurn().getAsMention()).complete();
+		    	
+	    	}
+    		else
+    		{
+    			objChannel.sendMessage("Now now, %s, it's %s's turn.", objUser.getAsMention(), round.getUserTurn().getAsMention()).complete();
+    		}
+	   	}
+    	//Don't give a TF if we haven't started yet!    	
+    	else if (objMsg.getContent().equals("/tf") && gameStart == false)
+    	{
+    		objChannel.sendMessage("Good that you want to start, but make sure all the players are added!").complete();
+    	}
+
     	//Add in ordered, random, last-go and freestyle modes
+    	//TODO: Implement these modes!
     	if (objMsg.getContent().equals("/playmode"))
     	{
     		round.toggleRandom();
     	}
     	
+    	//List our current players
     	if (objMsg.getContent().equals("/list"))
     	{
 
@@ -128,52 +186,15 @@ public class TheTFBot extends ListenerAdapter {
     		
     		for (int i =0; i < round.getNumberPlayers(); i++)
     		{
-    			allPlayers = allPlayers + round.getPlayerAt(i).getAsMention() + "\n";
+    			allPlayers = allPlayers + round.getUserAt(i).getAsMention() + "\n";
     		}
     		
     		objChannel.sendMessage(allPlayers).complete();
     		
     	}
     	
-    	if (objMsg.getContent().equals("/add_me"))
-    	{
-    		if (!round.checkPresent(objUser))
-    		{
-    			round.addPlayer(objUser);
-    			objChannel.sendMessage("Added!").complete();
-    		}
-    		else
-    		{
-    			objChannel.sendMessage("Don't be silly, %s, you're already on the player's list!", round.getTurn().getAsMention()).complete();
-    		}
-    	}
-    	
-    	if(objMsg.getContent().equals("/tf") && gameStart == true)
-    	{
-    		if(objUser.getAsMention().equals(round.getTurn().getAsMention()))
-    		{
-        		this.makeTransformation(false);
-    	    	objUser.openPrivateChannel().queue((channel) -> sendAndLog(channel, transformation + "\nEnjoy!"));    	
-    	    	objChannel.sendMessage("Transform!").complete();
-    	    	
-		    	round.nextTurn();
-		    	objChannel.sendMessage("Your turn, %s!", round.getTurn().getAsMention()).complete();
-		    	
-	    	}
-    		else
-    		{
-    			objChannel.sendMessage("Now now, %s, it's %s's turn.", objUser.getAsMention(), round.getTurn().getAsMention()).complete();
-    		}
-	   	}
-    	else if (objMsg.getContent().equals("/tf") && gameStart == false)
-    	{
-    		objChannel.sendMessage("Good that you want to start, but make sure all the players are added!").complete();
-    	}
-    	
-    	
-    	transformation = "";
-    	
-	    	
+    	//Clears out the transformation sting we just made, prepping for the next player's round.
+    	transformation = "";	
     }
     public static void sendAndLog(MessageChannel channel, String message)
     {
@@ -183,13 +204,17 @@ public class TheTFBot extends ListenerAdapter {
         channel.sendMessage(message).queue(callback); // ^ calls that
     }
     
+    //Method to send the PM
+    //TODO: Mute commands sent from here!
     public static void sendDM(User u, String message)
     {
     	u.openPrivateChannel().queue((channel) -> sendAndLog(channel, message + "\nEnjoy!"));
     }
     
-    //Uncommon Change set.
     
+    
+    //Uncommon Change set.
+
     public static void bodyChange()
     {
     	transformation = "Body Type: " + Constants.bodyType[rand.nextInt(11)] + "\n";
