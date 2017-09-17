@@ -8,6 +8,7 @@ public class Round {
 
 	private static ArrayList<User> players = new ArrayList();
 	private static int turn = 0;
+	private static boolean r_toggle = false;
 	
 	public void addPlayer(User u)
 	{
@@ -27,6 +28,19 @@ public class Round {
 		Collections.shuffle(players, new Random(seed) );
 	}
 	
+	public void toggleRandom()
+	{
+		if (r_toggle)
+			r_toggle = false;
+		else
+			r_toggle = true;
+	}
+	
+	public boolean getRandom()
+	{
+		return r_toggle;
+	}
+	
 	public boolean checkPresent(User u)
 	{
 		if (players.isEmpty())
@@ -37,6 +51,16 @@ public class Round {
 		return false;
 	}
 	
+	public void clearPlayers()
+	{
+		players.clear();
+	}
+	
+	public User getTurn()
+	{
+		return getPlayerAt(turn);
+	}
+	
 	public User getPlayerAt(int index)
 	{
 		return players.get(index);
@@ -44,7 +68,20 @@ public class Round {
 	
 	public void nextTurn()
 	{
-		turn++;
+		if (turn < getNumberPlayers()-1)
+			turn++;
+		else
+		{
+			setTurn(0);
+			if(r_toggle)
+				createOrder();
+		}
+			
+	}
+	
+	public void setTurn(int i)
+	{
+		turn = i;
 	}
 	
 

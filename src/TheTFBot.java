@@ -19,6 +19,7 @@ public class TheTFBot extends ListenerAdapter {
 	static Random rand = new Random();
 	static Round round = new Round();
 	static boolean gameStart = false;
+	static int turnNum = 0;
 	
 	public static void main(String[] args) throws LoginException, IllegalArgumentException, InterruptedException, RateLimitedException{
 				
@@ -98,7 +99,40 @@ public class TheTFBot extends ListenerAdapter {
     		if (round.getNumberPlayers() == 0)
     			objChannel.sendMessage("There are no players, add some first!").queue();
     		else
+    		{
+    			round.createOrder();
     			objChannel.sendMessage("Time to begin! %s, it's your turn first!", round.getPlayerAt(0).getAsMention()).queue();
+    		}
+    	}
+    	
+    	if (objMsg.getContent().equals("/clear") || (objMsg.getContent().equals("/end")))
+    	{
+    		transformation = "";
+    		gameStart = false;
+    		round.clearPlayers();
+    		round.setTurn(0);
+    		objChannel.sendMessage("Game Reset!").complete();
+    	}
+    	
+    	
+    	//Add in ordered, random, last-go and freestyle modes
+    	if (objMsg.getContent().equals("/playmode"))
+    	{
+    		round.toggleRandom();
+    	}
+    	
+    	if (objMsg.getContent().equals("/list"))
+    	{
+
+    		String allPlayers = "";
+    		
+    		for (int i =0; i < round.getNumberPlayers(); i++)
+    		{
+    			allPlayers = allPlayers + round.getPlayerAt(i).getAsMention() + "\n";
+    		}
+    		
+    		objChannel.sendMessage(allPlayers).complete();
+    		
     	}
     	
     	if (objMsg.getContent().equals("/add_me"))
@@ -106,28 +140,29 @@ public class TheTFBot extends ListenerAdapter {
     		if (!round.checkPresent(objUser))
     		{
     			round.addPlayer(objUser);
-    			objChannel.sendMessage("Added!").queue();
+    			objChannel.sendMessage("Added!").complete();
     		}
     		else
     		{
-    			System.out.println("Player cannot be added twice");
-    			objChannel.sendMessage("Don't be silly, %s, you're already on the player's list!", round.getPlayerAt(0).getAsMention()).queue();
+    			objChannel.sendMessage("Don't be silly, %s, you're already on the player's list!", round.getTurn().getAsMention()).complete();
     		}
     	}
     	
     	if(objMsg.getContent().equals("/tf") && gameStart == true)
     	{
-    		if(objUser.getAsMention().equals(round.getPlayerAt(0).getAsMention()))
+    		if(objUser.getAsMention().equals(round.getTurn().getAsMention()))
     		{
-	    		makeTransformation(false);
-		    	objUser.openPrivateChannel().queue((channel) -> sendAndLog(channel, transformation + "\nEnjoy!"));
+        		this.makeTransformation(false);
+    	    	objUser.openPrivateChannel().queue((channel) -> sendAndLog(channel, transformation + "\nEnjoy!"));    	
+    	    	objChannel.sendMessage("Transform!").complete();
+    	    	
+		    	round.nextTurn();
+		    	objChannel.sendMessage("Your turn, %s!", round.getTurn().getAsMention()).complete();
 		    	
-		    	//originally implemented with queue(). Async call, and in initial runs allowed string to be reset before call was complete.
-		    	objChannel.sendMessage("Transform!").complete();
 	    	}
     		else
     		{
-    			objChannel.sendMessage("Now now, %s, it's %s's turn.", objUser.getAsMention(), round.getPlayerAt(0).getAsMention()).complete();
+    			objChannel.sendMessage("Now now, %s, it's %s's turn.", objUser.getAsMention(), round.getTurn().getAsMention()).complete();
     		}
 	   	}
     	else if (objMsg.getContent().equals("/tf") && gameStart == false)
@@ -140,12 +175,17 @@ public class TheTFBot extends ListenerAdapter {
     	
 	    	
     }
-    public void sendAndLog(MessageChannel channel, String message)
+    public static void sendAndLog(MessageChannel channel, String message)
     {
         // Here we use a lambda expressions which names the callback parameter -response- and uses that as a reference
         // in the callback body -System.out.printf("Sent Message %s\n", response)-
         Consumer<Message> callback = (response) -> System.out.printf("");
         channel.sendMessage(message).queue(callback); // ^ calls that
+    }
+    
+    public static void sendDM(User u, String message)
+    {
+    	u.openPrivateChannel().queue((channel) -> sendAndLog(channel, message + "\nEnjoy!"));
     }
     
     //Uncommon Change set.
