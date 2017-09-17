@@ -33,8 +33,6 @@ public class TheTFBot extends ListenerAdapter {
 	
 	public void makeTransformation (Boolean isReroll)
 	{
-      	
-	    
 	    int intStartRoll = 20;
 	    int roll = rand.nextInt(intStartRoll);
 	    		
@@ -81,7 +79,6 @@ public class TheTFBot extends ListenerAdapter {
 		    				}
 		    				
 		    				reRollVal = rand.nextInt();			
-	    						
 	    }
 
 	}
@@ -123,7 +120,7 @@ public class TheTFBot extends ListenerAdapter {
     		else
     		{
     			round.createOrder();
-    			objChannel.sendMessage("Time to begin! ", round.getUserAt(0).getAsMention() + " You're changing: " + round.getUserAt(1).getAsMention()).queue();
+    			objChannel.sendMessage("Time to begin! " + round.getUserAt(0).getAsMention() + " You're changing: " + round.getUserAt(1).getAsMention()).queue();
     		}
     	}
     	
@@ -143,7 +140,7 @@ public class TheTFBot extends ListenerAdapter {
     	if(objMsg.getContent().equals("/get_tf"))
     	{
     	    	objUser.openPrivateChannel().queue((channel) -> sendAndLog(channel, round.getTurn().getAllTransformations()));    	
-    	    	objChannel.sendMessage(round.getUserTurn().getAsMention() + ", your transformations have been sent!").complete();
+    	    	objChannel.sendMessage(objUser.getAsMention() + ", your transformations have been sent!").complete();
 	   	}
     	
     	//Transform when the game has started
@@ -171,11 +168,12 @@ public class TheTFBot extends ListenerAdapter {
     		objChannel.sendMessage("Good that you want to start, but make sure all the players are added!").complete();
     	}
 
-    	//Add in ordered, random, last-go and freestyle modes
+    	//Add in ordered, random, last-go and freestyle modes. Default to ordered.
     	//TODO: Implement these modes!
     	if (objMsg.getContent().equals("/playmode"))
     	{
     		round.toggleRandom();
+    		objChannel.sendMessage("Random Mode toggled to: " + round.getRandom()).complete();
     	}
     	
     	//List our current players

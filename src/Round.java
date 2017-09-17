@@ -86,16 +86,18 @@ public class Round {
 		return players.get(index);
 	}
 	
-	//Set up for the next turn
+	//Set up for the next turn. Impliments the random playmode. 
 	public void nextTurn()
 	{
-		if (turn < getNumberPlayers()-1)
+		if ((turn < getNumberPlayers()-1) && ! (r_toggle))
 			turn++;
+		else if (r_toggle)
+		{
+			createOrder();
+		}
 		else
 		{
-			setTurn(0);
-			if(r_toggle)
-				createOrder();
+			setTurn(0);				
 		}
 			
 	}
