@@ -20,6 +20,7 @@ public class Round {
 	//Returns the number of players
 	public int getNumberPlayers()
 	{
+		//System.out.print("PlayerArraySize : " + players.size() + " "); 
 		return players.size();
 	}
 	

@@ -151,12 +151,18 @@ public class TheTFBot extends ListenerAdapter {
     	//Start the game command
     	if (objMsg.getContent().equals("/start"))
     	{
-    		gameStart = true;
     		if (round.getNumberPlayers() == 0)
     			objChannel.sendMessage("There are no players, add some first!").queue();
+    		if (round.getNumberPlayers() == 1)
+    		{
+    			round.createOrder();
+    			gameStart = true;
+    			objChannel.sendMessage("Having some fun alone?...ok then " + round.getUserAt(0).getAsMention() + " Lets see what you turn into.").queue();
+    		}
     		else
     		{
     			round.createOrder();
+    			gameStart = true;
     			objChannel.sendMessage("Time to begin! " + round.getUserAt(0).getAsMention() + " You're changing: " + round.getUserAt(1).getAsMention()).queue();
     		}
     	}
@@ -176,7 +182,8 @@ public class TheTFBot extends ListenerAdapter {
     	//TODO: Make sure it's formatted nicely.
     	if(objMsg.getContent().equals("/get_tf"))
     	{
-    	    	objUser.openPrivateChannel().queue((channel) -> sendAndLog(channel, round.getTurn().getAllTransformations()));    	
+    	    	objUser.openPrivateChannel().queue((channel) -> sendAndLog(channel, round.getTurn().getAllTransformations()));
+    	    	
     	    	objChannel.sendMessage(objUser.getAsMention() + ", your transformations have been sent!").complete();
 	   	}
     	
