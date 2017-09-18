@@ -1,0 +1,287 @@
+<TransformationList>
+ <SelectionDie>20</SelectionDie>
+
+ <TFCategory="Gender">
+  <RollList>
+   <Roll>16</Roll>
+   <Roll>17</Roll>
+  </RollList>
+  <TF>Gender Swap</TF>
+  <TF>Hermaphrodite (If already, lose one genital at random.)</TF>
+  <TF>Genital Swap</TF>
+  <TF>Partial change. One feature of the youe choice is altered to the opposite gender. (Face, legs, hands, etc.)</TF>
+ </TFCategory>
+ 
+ <TFCategory="Uncommon">
+   <RollList>
+    <Roll>1</Roll>
+    <Roll>20</Roll>
+   </RollList>
+   <TF>Change of body type (Form remains animate)</TF>
+   <TF>Vocal effect</TF>
+   <TF>Mental effect or clothing affect (Free choice. transformer gets to choose)</TF>
+   <TF>Gains an additional row of breasts or additional genetalia.</TF>
+ </TFCategory>
+ 
+ <TFCategory="Reroll">
+    <RollList>
+    <Roll>18</Roll>
+    <Roll>19</Roll>
+   </RollList>
+   <TF>Do Both TFs</TF>
+   <TF>The first TF hits your subject, the second effect hits all players!</TF>
+   <TF>Treat this effect as if you had rolled that effect twice (2 mental effects, 2 abilities, etc)</TF>
+   <TF>Both TFs hit all players!</TF>
+   <TF>Choose 2 of the following and discards the remainder.</TF>
+ </TFCategory>
+
+ <TFCategory="Age">
+    <RollList>
+    <Roll>13</Roll>
+    <Roll>14</Roll>
+	<Roll>15</Roll>
+   </RollList>
+  <TF>Regress in age 10 years</TF>
+  <TF>Regress in age 5 years</TF>
+  <TF>Regress in age 3 years</TF>
+  <TF>Progress in age 3 years</TF>
+  <TF>Progress in age 5 years</TF>
+  <TF>Progress in age 10 years</TF>
+ </TFCategory>
+
+ <TFCategory="Animal">
+  <RollList>
+   <Roll>2</Roll>
+   <Roll>3</Roll>
+   <Roll>4</Roll>
+  </RollList>
+  <TF>Cat</TF>
+  <TF>Dog</TF>
+  <TF>Skunk</TF>
+  <TF>Cow</TF>
+  <TF>Wolf</TF>
+  <TF>Dragon</TF>
+  <TF>Griffon</TF>
+  <TF>Naga</TF>
+  <TF>Slimegirl</TF>
+  <TF>Demon/Succubus/Incubus</TF>
+  <TF>Horse</TF>
+  <TF>Donkey</TF>
+  <TF>Rabbit</TF>
+  <TF>Squirrel</TF>
+  <TF>Chicken</TF>
+  <TF>Duck</TF>
+  <TF>Fox</TF>
+  <TF>Hippo</TF>
+  <TF>Elephant</TF>
+  <TF>Tiger</TF>
+  <TF>Lion</TF>
+  <TF>Leopard</TF>
+  <TF>Swan</TF>
+  <TF>Turkey</TF>
+  <TF>Ostrich</TF>
+  <TF>Frog</TF>
+  <TF>Gecko</TF>
+  <TF>Sheep</TF>
+  <TF>Bee</TF>
+  <TF>Spider</TF>
+  <TF>Ladybird/bug</TF>
+  <TF>Antelope</TF>
+  <TF>Snake</TF>
+  <TF>Bat</TF>
+  <TF>Giraffe</TF>
+  <TF>Monkey</TF>
+  <TF>Bear</TF>
+  <TF>Racoon</TF>
+  <TF>Crocodile</TF>
+  <TF>Angel</TF>
+  <TF>Cerberus</TF>
+  <TF>Slug</TF>
+  <TF>Fairy</TF>
+  <TF>Sphinx</TF>
+  <TF>Peacock</TF>
+  <TF>Dolphin</TF>
+  <TF>Orca</TF>
+  <TF>Mouse</TF>
+  <TF>Rhino</TF>
+  <TF>Meerkat</TF>
+  <TF>Penguin</TF>
+  <TF>Panda</TF>
+  <TF>Lemur</TF>
+  <TF>Phoenix</TF>
+  <TF>Kangaroo</TF>
+  <TF>Crab</TF>
+  <TF>Pig</TF>
+  <TF>Dinosaur</TF>
+  <TF>Satyr</TF>
+  <TF>Djinn</TF>
+  <TF>Squid</TF>
+  <TF>Hydra</TF>
+  <TF>Dryad</TF>
+  <TF>Imp</TF>
+  <TF>Toucan</TF>
+  <TF>Otter</TF>
+  <TF>Red Panda</TF>
+  <TF>Scorpion</TF>
+  <TF>Lizard</TF>
+  <TF>Mermaid</TF>
+  <TF>Pangolin</TF>
+  <TF>Porcupine</TF>
+  <TF>Snail</TF>
+  <TF>Butterfly / Moth</TF>
+  <TF>Jellyfish</TF>
+  <TF>Sex/Tentacle Monster (Any variation you wish though some (most?) best checked with Victim)</TF>
+  <TF>Harpy</TF>
+  <TF>Alraune (e621 it :p Plant person)</TF>
+  <TF>computer game creature. examples include Digimon, Disgaea, Final Fantasy etc/</TF>
+  <TF>pokemon or alternatively free choice</TF>
+ </TFCategory>
+ 
+ <TFCategory="BodyType">
+  <TF>Inflatable</TF>
+  <TF>Latex</TF>
+  <TF>Plush</TF>
+  <TF>Flesh and Blood</TF>
+  <TF>Clockwork</TF>
+  <TF>Robot</TF>
+  <TF>Slime</TF>
+  <TF>Animate food (Chocolate, Cake, Jelly etc anything eaten quickly regenerates)</TF>
+  <TF>Plastic toy</TF>
+  <TF>Tooned</TF>
+  <TF>Plant</TF>
+ </TFCategory>
+ 
+ <TFCategory="Supernatural">
+  <RollList>
+   <Roll>9</Roll>
+   <Roll>10</Roll>
+  </RollList>
+  <TF>Seductive aura</TF>
+  <TF>Ability to increase(up to 100%)/decrease(down to 50%) size of self and others</TF>
+  <TF>Ability to breath a thing of transformers choice (fire, ice, confetti, whipped cream,bubbles anything you want)</TF>
+  <TF>renaming. Can rename things both people and objects. no one can remember the old name and must use the new one. only you can remember the original name.</TF>
+  <TF>transparency. You can adjust the transparency of inanimate (and non flesh and blood PC’s) all the way down to that of glass and back to fully opaque.</TF>
+  <TF>Fate. 1/round you may have an opponent re roll a dice. (IC it wasn't rerolled)</TF>
+  <TF>Trace. you get a small vision of both your changes just before they happen and you may choose to exchange the results with your opponent. You may do this twice and then you lose the trace ability.</TF>
+  <TF>Double up!. You get a small vision of your opponents change just before it happens. you may choose to double the strength of this effect as if they had got each of them twice. After using this once you lose the double up ability</TF>
+  <TF>Empathy!. You can link the sensations of 2 beings so one feels the same emotions the other is. this can include yourself and does not need to be 2 ways.</TF>
+  <TF>Transfer. You may transfer one of your existing changes onto your opponent. This power must be used immediately and then expires.</TF>
+  <TF>Hypnotic voice. Target can resist but smaller suggestions almost always work (Ultimately up to the person you are trying to affect if it works)</TF>
+  <TF>Extra helpings. you get a small vision of both you and your opponents change. You can cause your opponent to get your change in addition to their own (You still get yours) after using this ability once your lose the extra helpings ability.</TF>
+  <TF>How ...Unfortunate. Whenever you roll a secondary dice to choose a change from a table for your opponent you may choose the result of that dice and the result of any following dice. You may use this ability twice and then it expires</TF>
+  <TF>You can reach up below the back of someones neck to pull an imaginary pull cord and a real one will appear. It comes off after use unless the target has a suitable body type in which case its permanent. on pulling the cord they will say something stereotypical to their current form (Cord pullers choice!)</TF>
+  <TF>Your tongue lengthens to almost 3m long though somehow still fits in your mouth. You can use it dexterously to manipulate things at a distance.</TF>
+  <TF>Simon says. Once per round you may declare an action for all opponents to perform by starting it with Simon says. It has to be possible and they do not have to do it. If they don't they roll an additional dice on their next drink.</TF>
+  <TF>Sexy Touch. Just like Midas you are cursed to transform anything you touch!. Any piece of clothing you touch with your hands that you aren't wearing will become sexier. You may only affect any single piece of clothing once.</TF>
+  <TF>Arousal Vision*. You can see a number floating above peoples heads measuring their arousal between 0 and 100</TF>
+  <TF>Slutty Vision*. You can see a number floating above peoples heads measuring how slutty they are between 0 and 100</TF>
+  <TF>Bimbo Vision*. You can see a number floating above peoples heads measuring how much of a bimbo they are between 0 and 100</TF>
+  <TF>Lovehate vision. You can see a number floating above peoples heads measuring how much they like you from absolute hate -100 to absolute love 100. most. number >50 tends to represent some level of crush or physical attraction thus friends are likely to be 20-40.</TF>
+ </TFCategory>
+ 
+ <TFCategory="Clothing">
+  <RollList>
+   <Roll>7</Roll>
+   <Roll>8</Roll>
+  </RollList>
+  <TF>Add or change cosmetics</TF>
+  <TF>Add or change piercings</TF>
+  <TF>add or change Tattoos</TF>
+  <TF>add or change Jewelry apart from piercings.</TF>
+  <TF>Current clothing becomes skimpier</TF>
+  <TF>Current clothing changes material</TF>
+  <TF>Clothing becomes generally sexier. heels get higher, neckline plunges etc</TF>
+  <TF>Change to hair style, colour, length etc. if no hair either grows hair or horns etc reshape instead</TF>
+  <TF>Complete change to gothic style</TF>
+  <TF>Complete change to very frilly and cute.</TF>
+  <TF>Complete change to uniform (1 police 2 showgirl 3 nurse 4 maid  5 schoolgirl 6 stripper/exotic dancer 7 dominatrix 8 slave outfit 9 playboy bunny style waitress 10 cheerleader)</TF>
+  <TF>Complete change to costume (witch, vampire, mermaid etc)</TF>
+  <TF>Complete change to lingerie</TF>
+  <TF>Complete change to swimwear</TF>
+  <TF>Complete change to high fashion (feather boa, expensive dress, jewelry, potentially a cigarette holder etc)</TF>
+  <TF>Complete change to clubbing outfit</TF>
+  <TF>Complete change to popstar outfit</TF>
+  <TF>Complete change to nudist</TF>
+ </TFCategory>
+ 
+ <TFCategory="Mental">
+  <RollList>
+   <Roll>5</Roll>
+   <Roll>6</Roll>
+  </RollList>
+  <TF>increased flirtiness</TF>
+  <TF>must call others master/mistress</TF>
+  <TF>increased suggestibility</TF>
+  <TF>decreased intelligence</TF>
+  <TF>increased submissive tendencies</TF>
+  <TF>increased dominant tendencies</TF>
+  <TF>change of name (generally to something embarrassing). cannot remember original (This affects everyone somehow they know the new name but not the old. everyone knows its changed) new name is chosen by the transformer.</TF>
+  <TF>increased arousal</TF>
+  <TF>more stereotypical behaviour to current form (reroll if nothing really appropriate)</TF>
+  <TF>increased addiction to a substance</TF>
+  <TF>decreased difficulty to seduce. falls in love/lust more easily.</TF>
+  <TF>decreased maturity. throws tantrums more easily</TF>
+  <TF>decreased sophistication. generally more crude</TF>
+  <TF>increased sophistication, less crude acts more stereotypically high class.</TF>
+  <TF>gain or increase strength of a fetish</TF>
+  <TF>reduced inhibitions</TF>
+  <TF>movements, gestures and general stance become sexier. unless concentrating will almost always take on an alluring pose when not moving</TF>
+  <TF>must answer any question asked truthfully (Reroll if already has this effect)</TF>
+  <TF>you are very easily flattered/embarrassed and flush very easily</TF>
+  <TF>when being fussed over, petted, stroked you are helpless to resist and allow the person to continue their actions while purring/cooing etc</TF>
+  <TF>easily distracted by stimulus like a cat. will paw at things dangled nearby, chase small moving objects, leap after balls without thinking etc. behaviour when not distracted wont really be affected.</TF>
+  <TF>compulsion to dance whenever you hear music. nature of dance will depend on the nature of the music. somehow you will be an expert in whatever dance you attempt.</TF>
+  <TF>Personality moves towards (Not the entire way) targets current form and clothing.</TF>
+  <TF>Cannot remember original form. current form replaced in all memories and thus remembers starting the game in current form. They know the memories are fake but cannot remember what they used to look like.</TF>
+  <TF>Believes they are the girl/boy friend of another person present. The other party becomes aware of this. This doesn’t change how they actually feel about the person and they may be confused as to why they are involved.</TF>
+  <TF>Profession change. Reality temporarily changes so you do a different thing for a living. memories change and any skills to do the task are temporarily gained. everyone remembers the new reality and although they know its changed cant remember the old one.</TF>
+  <TF>Reputation change. Although nothing actually changes everyone beleives that you have a specific reputation. be that for being slutty/easy/intimidating etc.</TF>
+  <TF>Life goals/Ambition change. The targets lifegoals and ambitions change temporarily. this may replace some existing ambitions or be in addition to existing goals.</TF>
+ </TFCategory>
+ 
+ <TFCategory="Speech">
+  <TF>pepper speech with relevant animal noises (If none relevant reroll)</TF>
+  <TF>change of accent</TF>
+  <TF>increased pitch</TF>
+  <TF>decreased pitch</TF>
+  <TF>increased sensuality</TF>
+  <TF>cannot resist using pet names for people. they may be complementary or insulting</TF>
+  <TF>increased rudeness of speech</TF>
+  <TF>increased politeness of speech</TF>
+  <TF>must talk in third person</TF>
+  <TF>must talk using simpler words (no actual intelligence change)</TF>
+ </TFCategory>
+ 
+ <TFCategory="Misc">
+  <RollList>
+   <Roll>11</Roll>
+   <Roll>12</Roll>
+  </RollList>
+  <TF>Nose becomes rubber and squeaks when pressed.</TF>
+  <TF>When hugged or squeezed you automatically make the noise of the creature that makes a recognisable noise (Cat - meows Dog-barks etc) you most resemble if they have a traditional noise.</TF>
+  <TF>You gain plastic handles on your hips which people can hold on to</TF>
+  <TF>Your body reshapes to a quadrupedal form your arms becoming legs. If you are already in a quadrupedal form you change to a bipedal form</TF>
+  <TF>You gain a spinnerette just above your anus allowing you to spin web.</TF>
+  <TF>Any natural weapons you have become more impressive. claws,talons and fangs become larger (maybe sabertooth). spines, stingers etc are also affected.</TF>
+  <TF>You become exceedingly flexible and capable of contortion.</TF>
+  <TF>physical strength increased by 50%</TF>
+  <TF>gain an udder</TF>
+  <TF>if you have no wings gain small ornamental demon wings otherwise your existing wings transform to demonic style</TF>
+  <TF>gain a new erogenous zone</TF>
+  <TF>any milk producing organs (udders, lactating breasts) produce another substance (ex cream, honey, jam, cola etc). if there are no lactating organs breasts start lactating.</TF>
+  <TF>any bodily fluids gain an addictive quality (Except Saliva)</TF>
+  <TF>gains cow like nipples</TF>
+  <TF>random tf related to your skin type. if flesh and blood reroll. examples might be a robot getting a disk slot with personality disks. an inflatable creature gaining an O shaped mouth or a plant creature becoming rooted to the ground.</TF>
+  <TF>grow larger by 50%</TF>
+  <TF>shrink to 50%</TF>
+  <TF>Musculature change. increase or decrease as transformers choice.</TF>
+  <TF>gain an additional row of breasts or additional genetalia (Can be in a different place from current genetalia and can replace an existing body part if you wish)</TF>
+  <TF>breasts increase in size</TF>
+  <TF>nipples increase in size</TF>
+  <TF>genitals increase in size</TF>
+  <TF>hips/ass increases in size</TF>
+  <TF>increased sensitivity of (1 genitals, 2 anus, 3 mouth,4 skin in general or area of your choice that isnt 1,2 or 3)</TF>
+  <TF>Lactation increases/ Start Lactating</TF>
+ </TFCategory>
+ 
+</TransformationList>
