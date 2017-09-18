@@ -2,8 +2,9 @@
 public class Constants 
 {
 	
-	public static final String token = "MzMzNzczNzM1MDc5NDQ0NDkx.DERiiw.EFZMNAoVfqD3PYy-9Hwi68LVY1E";
- 
+  //public static final String token = "MzMzNzczNzM1MDc5NDQ0NDkx.DERiiw.EFZMNAoVfqD3PYy-9Hwi68LVY1E";
+  public static final String token = "MzMzMzYwMDI2NzAzODg4Mzg0.DELiIw.ldChs8EOIn62mXnC3nRruvRZqiY";
+	
 	public static final String[] uncommon= 
 		{
 				"Change of body type (Form remains animate)",
