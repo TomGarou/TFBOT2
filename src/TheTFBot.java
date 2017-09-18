@@ -4,6 +4,8 @@ import java.util.function.Consumer;
 
 import javax.security.auth.login.LoginException;
 import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -19,22 +21,37 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 public class TheTFBot extends ListenerAdapter {
 	
+	//Our transformation string, used to concat the total chang the player gets
 	public static String transformation = "";
+	
+	//A Random number
 	static Random rand = new Random();
+	
+	//Creating a new round of a game
 	static Round round = new Round();
+	
+	//A check to see if the same has been started. We can only have one game at a time.
 	static boolean gameStart = false;
+	
+	//The current turn counter.
 	static int turnNum = 0;
+	
+	//Allow the TF XML doc to be accessed in the rest of the class.
+	static Document doc; 
 	
 	public static void main(String[] args) throws LoginException, IllegalArgumentException, InterruptedException, RateLimitedException
 	{
 		try
 		{
-			File fXmlFile = new File("D:\\Projects\\Java\\Discord\\Start\\TheTFBot2\\src\\TF.xml");
+			File fXmlFile = new File("src/TF.xml");
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			Document doc = dBuilder.parse(fXmlFile);
+			doc = dBuilder.parse(fXmlFile);
 			
-			System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+			//There should only be one of these.
+			
+			//NodeList nList = doc.getElementsByTagName("SelectionDie");
+			
 		}
 		catch(Exception e)
 		{
@@ -51,6 +68,8 @@ public class TheTFBot extends ListenerAdapter {
 	
 	public void makeTransformation (Boolean isReroll)
 	{	
+		
+		
 	    int intStartRoll = 20;
 	    int roll = rand.nextInt(intStartRoll);
 	    		
