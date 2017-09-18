@@ -1,7 +1,11 @@
+import java.io.File;
 import java.util.Random;
 import java.util.function.Consumer;
 
 import javax.security.auth.login.LoginException;
+import org.w3c.dom.Document;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 import net.dv8tion.jda.core.*;
 import net.dv8tion.jda.core.entities.Message;
@@ -21,8 +25,22 @@ public class TheTFBot extends ListenerAdapter {
 	static boolean gameStart = false;
 	static int turnNum = 0;
 	
-	public static void main(String[] args) throws LoginException, IllegalArgumentException, InterruptedException, RateLimitedException{
-				
+	public static void main(String[] args) throws LoginException, IllegalArgumentException, InterruptedException, RateLimitedException
+	{
+		try
+		{
+			File fXmlFile = new File("D:\\Projects\\Java\\Discord\\Start\\TheTFBot2\\src\\TF.xml");
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(fXmlFile);
+			
+			System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		
 		JDA discord = null;
 		discord = new JDABuilder(AccountType.BOT).setToken(Constants.token).buildBlocking();
 		discord.addEventListener(new TheTFBot());
@@ -32,7 +50,7 @@ public class TheTFBot extends ListenerAdapter {
 	//TODO: Implement this as a list imported from a flat file. It will make changes easier than modifying code, and can easily customize games.
 	
 	public void makeTransformation (Boolean isReroll)
-	{
+	{	
 	    int intStartRoll = 20;
 	    int roll = rand.nextInt(intStartRoll);
 	    		

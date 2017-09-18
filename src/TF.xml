@@ -1,7 +1,7 @@
 <TransformationList>
  <SelectionDie>20</SelectionDie>
 
- <TFCategory="Gender">
+ <TFCategory name="Gender">
   <RollList>
    <Roll>16</Roll>
    <Roll>17</Roll>
@@ -12,7 +12,7 @@
   <TF>Partial change. One feature of the youe choice is altered to the opposite gender. (Face, legs, hands, etc.)</TF>
  </TFCategory>
  
- <TFCategory="Uncommon">
+ <TFCategory name="Uncommon">
    <RollList>
     <Roll>1</Roll>
     <Roll>20</Roll>
@@ -23,7 +23,7 @@
    <TF>Gains an additional row of breasts or additional genetalia.</TF>
  </TFCategory>
  
- <TFCategory="Reroll">
+ <TFCategory name="Reroll">
     <RollList>
     <Roll>18</Roll>
     <Roll>19</Roll>
@@ -35,7 +35,7 @@
    <TF>Choose 2 of the following and discards the remainder.</TF>
  </TFCategory>
 
- <TFCategory="Age">
+ <TFCategory name="Age">
     <RollList>
     <Roll>13</Roll>
     <Roll>14</Roll>
@@ -49,7 +49,7 @@
   <TF>Progress in age 10 years</TF>
  </TFCategory>
 
- <TFCategory="Animal">
+ <TFCategory name="Animal">
   <RollList>
    <Roll>2</Roll>
    <Roll>3</Roll>
@@ -137,7 +137,7 @@
   <TF>pokemon or alternatively free choice</TF>
  </TFCategory>
  
- <TFCategory="BodyType">
+ <TFCategory name="BodyType">
   <TF>Inflatable</TF>
   <TF>Latex</TF>
   <TF>Plush</TF>
@@ -151,7 +151,7 @@
   <TF>Plant</TF>
  </TFCategory>
  
- <TFCategory="Supernatural">
+ <TFCategory name="Supernatural">
   <RollList>
    <Roll>9</Roll>
    <Roll>10</Roll>
@@ -179,7 +179,7 @@
   <TF>Lovehate vision. You can see a number floating above peoples heads measuring how much they like you from absolute hate -100 to absolute love 100. most. number >50 tends to represent some level of crush or physical attraction thus friends are likely to be 20-40.</TF>
  </TFCategory>
  
- <TFCategory="Clothing">
+ <TFCategory name="Clothing">
   <RollList>
    <Roll>7</Roll>
    <Roll>8</Roll>
@@ -204,7 +204,7 @@
   <TF>Complete change to nudist</TF>
  </TFCategory>
  
- <TFCategory="Mental">
+ <TFCategory name="Mental">
   <RollList>
    <Roll>5</Roll>
    <Roll>6</Roll>
@@ -239,7 +239,7 @@
   <TF>Life goals/Ambition change. The targets lifegoals and ambitions change temporarily. this may replace some existing ambitions or be in addition to existing goals.</TF>
  </TFCategory>
  
- <TFCategory="Speech">
+ <TFCategory name="Speech">
   <TF>pepper speech with relevant animal noises (If none relevant reroll)</TF>
   <TF>change of accent</TF>
   <TF>increased pitch</TF>
@@ -252,7 +252,7 @@
   <TF>must talk using simpler words (no actual intelligence change)</TF>
  </TFCategory>
  
- <TFCategory="Misc">
+ <TFCategory name="Misc">
   <RollList>
    <Roll>11</Roll>
    <Roll>12</Roll>
