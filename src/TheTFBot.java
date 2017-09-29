@@ -111,16 +111,22 @@ public class TheTFBot extends ListenerAdapter {
     	
     	//Start the game command
     	if (objMsg.getContent().equals("/start"))
-    	{
-    		gameStart = true;
-    		if (round.getNumberPlayers() == 0)
-    			objChannel.sendMessage("There are no players, add some first!").queue();
-    		else
-    		{
-    			round.createOrder();
-    			objChannel.sendMessage("Time to begin! " + round.getUserAt(0).getAsMention() + " You're changing: " + round.getUserAt(1).getAsMention()).queue();
-    		}
-    	}
+        {
+            if (round.getNumberPlayers() == 0)
+                objChannel.sendMessage("There are no players, add some first!").queue();
+            if (round.getNumberPlayers() == 1)
+            {
+                round.createOrder();
+                gameStart = true;
+                objChannel.sendMessage("Having some fun alone?...ok then " + round.getUserAt(0).getAsMention() + " Lets see what you turn into.").queue();
+            }
+            else
+            {
+                round.createOrder();
+                gameStart = true;
+                objChannel.sendMessage("Time to begin! " + round.getUserAt(0).getAsMention() + " You're changing: " + round.getUserAt(1).getAsMention()).queue();
+            }
+        }
     	
     	//This command should end the game
     	if (objMsg.getContent().equals("/clear") || (objMsg.getContent().equals("/end")))
