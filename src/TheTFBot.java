@@ -1,4 +1,6 @@
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.function.Consumer;
 
@@ -24,6 +26,8 @@ public class TheTFBot extends ListenerAdapter {
 	//Our transformation string, used to concat the total chang the player gets
 	public static String transformation = "";
 	
+	public static List<TransformationType> tfList = new ArrayList();
+	
 	//A Random number
 	static Random rand = new Random();
 	
@@ -39,19 +43,17 @@ public class TheTFBot extends ListenerAdapter {
 	//Allow the TF XML doc to be accessed in the rest of the class.
 	static Document doc; 
 	
+	static TransformationFactory tfGenerator;
+	
 	public static void main(String[] args) throws LoginException, IllegalArgumentException, InterruptedException, RateLimitedException
 	{
 		try
-		{
-			File fXmlFile = new File("src/TF.xml");
-			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			doc = dBuilder.parse(fXmlFile);
+		{	getAndParseXML();	
+			tfGenerator = new TransformationFactory(getDoc());
 			
-			//There should only be one of these.
-			
-			//NodeList nList = doc.getElementsByTagName("SelectionDie");
-			
+			//Set up our Master List of Transformations
+			tfList = tfGenerator.generateTFList();
+
 		}
 		catch(Exception e)
 		{
@@ -61,62 +63,21 @@ public class TheTFBot extends ListenerAdapter {
 		JDA discord = null;
 		discord = new JDABuilder(AccountType.BOT).setToken(Constants.token).buildBlocking();
 		discord.addEventListener(new TheTFBot());
+		
+		makeTransformation(false);
     }
     
 	//The Master list of transformations
 	//TODO: Implement this as a list imported from a flat file. It will make changes easier than modifying code, and can easily customize games.
 	
-	public void makeTransformation (Boolean isReroll)
+	public static void makeTransformation (Boolean isReroll)
 	{	
 		
-		
-	    int intStartRoll = 20;
+		//Initiate our random selection of the top level transformation.
+	    int intStartRoll = tfGenerator.getDSize();
 	    int roll = rand.nextInt(intStartRoll);
-	    		
-	    while (isReroll && (roll == 18 || roll == 19))
-	    	roll = rand.nextInt(intStartRoll);
-	    
-		switch(roll)
-    	{
-	    	case 1: case 20:
-	    		int unCommonRoll = rand.nextInt(4);
-	    		switch(unCommonRoll)
-	    		{
-	    			case 0: bodyChange(); break;
-	    			case 1: vocalChange(); break;
-	    			case 2: 
-	    				if(rand.nextBoolean()) 
-	    					mentalChange();
-	    				else
-	    					clothingChange(); 
-	    				break;
-	    			case 3: transformation = "gains an additional row of breasts or additional genetalia."; break;
-	    		}
-	    		break; //4
-	    		
-	    	case 2: case 3: case 4: creatureChange(); break; //80
-	    	case 5: case 6: mentalChange(); break; //28
-	    	case 7: case 8: clothingChange(); break; //20
-	    	case 9: case 10: mentalChange(); break; //21
-	    	case 11: case 12: miscChange(); break; //25
-	    	case 13: case 14: case 15: ageChange(); break; //6
-	    	case 16: case 17: genderChange(); break; //6
-	    	case 18: case 19: 
 
-		    				transformation = "Bonus Rerolls! Do the Following: ";
-		    				
-		    				int reRollVal = rand.nextInt(5);
-		    				
-		    				transformation = transformation + " " + Constants.reroll[reRollVal] + "\n";
-		    				
-		    				switch(reRollVal)
-		    				{
-		    					case 0: case 1: case 3: case 4: makeTransformation(true); makeTransformation(true); makeTransformation(true); break;
-		    					case 2: makeTransformation(true); break;
-		    				}
-		    				
-		    				reRollVal = rand.nextInt();			
-	    }
+	    transformation = tfGenerator.getTrasnformation(roll);
 
 	}
 	
@@ -246,56 +207,43 @@ public class TheTFBot extends ListenerAdapter {
     	u.openPrivateChannel().queue((channel) -> sendAndLog(channel, message + "\nEnjoy!"));
     }
     
-    
-    
-    //Uncommon Change set.
-
-    public static void bodyChange()
+    public static void getAndParseXML()
     {
-    	transformation = "Body Type: " + Constants.bodyType[rand.nextInt(11)] + "\n";
+		try
+		{
+			File fXmlFile = new File("src/TF.xml");
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			setDoc(dBuilder.parse(fXmlFile));
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		
     }
     
-    public static void vocalChange()
-    {
-    	transformation = "Vocal Change: " + Constants.speech[rand.nextInt(10)] + "\n";
-    }
-    
-    public static void mentalChange()
-    {
-    	transformation = "Mental: " + Constants.mental[rand.nextInt(28)] + "\n";
-    }
-    
-    public static void supernaturalChange()
-    {
-    	transformation = "Body Type: " + Constants.supernatural[rand.nextInt(11)] + "\n";
-    }
-    
-    public static void clothingChange()
-    {
-    	transformation = "Clothing: " + Constants.clothing[rand.nextInt(20)] + "\n";
-    }
-    
-    //Main Changes tables
-    public static void miscChange()
-    {
-    	transformation = "Misc Change: " +  Constants.misc[rand.nextInt(25)] + "\n";
-    }
-    
-    public static void ageChange()
-    {
-    	transformation = "Age Change: " + Constants.age[rand.nextInt(6)] + "\n";
-    }
-    
-    public static void genderChange()
-    {
-    	transformation = "Gender:" + Constants.gender[rand.nextInt(4)] + "\n";
-    }
-    
-    public static void creatureChange()
-    {
-    	transformation = "Creature Feature Change: " + Constants.animal[rand.nextInt(80)] + "\n";
-    }
-    
+	public static void setDoc(Document dXML)
+	{
+		doc = dXML;
+		
+	}
+	
+	public static Document getDoc()
+	{
+		return doc;
+		
+	}
+	
+	public static void setTFList(List<TransformationType> tfL)
+	{
+		tfList = tfL;
+	}
+	
+	public static List<TransformationType> getTFList()
+	{
+		return tfList;
+	}
 }
 
 

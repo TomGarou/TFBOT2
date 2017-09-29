@@ -9,6 +9,7 @@ public class Round {
 	private static ArrayList<Player> players = new ArrayList();
 	private static int turn = 0;
 	private static boolean r_toggle = false;
+	private static int dSize = 0;
 	
 	//Add the player to our round's list
 	public void addPlayer(Player u)
